@@ -94,7 +94,14 @@ You can regenerate this figure by running:
 ``` r
 source("scripts/create_required_figure.R")
 ```
+------------------------------------------------------------------------
+## How to Install Packages for This Project
 
+To ensure reproducibility, this project uses [`renv`](https://rstudio.github.io/renv/). After cloning the repository, run:
+
+``` r
+make install
+```
 ------------------------------------------------------------------------
 
 ## Notes
