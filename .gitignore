@@ -1,0 +1,11 @@
+
+.Rhistory
+.RData
+.Rproj.user/
+
+report/*.html
+
+*.utf8.md
+*.knit.md
+
+.DS_Store
