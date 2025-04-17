@@ -1,6 +1,6 @@
 # COVID-19 Vaccine Distribution Analysis
 
-**Author:** Zoli Smith\
+**Author:** Zoli Smith
 **Date:** April 2025
 
 ------------------------------------------------------------------------
