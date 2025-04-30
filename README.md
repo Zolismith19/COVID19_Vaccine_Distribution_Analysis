@@ -104,6 +104,16 @@ make install
 ```
 ------------------------------------------------------------------------
 
+# COVID-19 Vaccine Distribution Analysis
+
+## 🔨 Build Docker Image (Optional)
+```bash
+docker build -t zolig/covid-vaccine-report .
+```
+------------------------------------------------------------------------ 
+
+------------------------------------------------------------------------
+
 ## Notes
 
 -   All file paths are relative and cross-platform compatible

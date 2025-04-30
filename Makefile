@@ -1,3 +1,5 @@
+.PHONY: install all clean docker-run
+
 install:
 	Rscript -e "renv::restore()"
 
@@ -14,3 +16,14 @@ report/FINAL550-ZOLI-G-S.html: report/FINAL550-ZOLI-G-S.Rmd report/tables/requir
 
 clean:
 	rm -f report/*.html report/figures/*.png report/tables/*.html
+
+.PHONY: docker-run
+
+docker-run:
+	docker run --rm -v "$$(pwd)/report:/home/project/report" zolig/covid-vaccine-report
+
+
+
+
+
+
