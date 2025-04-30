@@ -26,15 +26,15 @@ COVID_FINAL/
 ├── report/
 │   ├── FINAL550-ZOLI-G-S.Rmd
 │   ├── FINAL550-ZOLI-G-S--.html
-│   └── tables/
-│       └── required_table.html
-├── report/figures/
-│   └── required_figure.png
+│   ├── tables/
+│   │   └── required_table.html
+│   └── figures/
+│       └── required_figure.png
 ├── scripts/
 │   ├── create_required_table.R
 │   └── create_required_figure.R
 ├── Makefile
-└── README.md
+├── README.md
                           
 ```
 
@@ -95,31 +95,70 @@ You can regenerate this figure by running:
 source("scripts/create_required_figure.R")
 ```
 ------------------------------------------------------------------------
-## How to Install Packages for This Project
+## Package Installation (with renv)
 
-To ensure reproducibility, this project uses [`renv`](https://rstudio.github.io/renv/). After cloning the repository, run:
+This project uses renv for reproducibility. To restore the environment:
 
 ``` r
 make install
 ```
 ------------------------------------------------------------------------
 
-# COVID-19 Vaccine Distribution Analysis
+# Dockerized Workflow (Automated)
 
-## 🔨 Build Docker Image (Optional)
+## Build the Image (optional if using DockerHub)
+
 ```bash
+
 docker build -t zolig/covid-vaccine-report .
+
+```
+------------------------------------------------------------------------
+## Run with Docker (automatically generates figure & table)
+
+```bash
+
+make docker-run
+
+```
+This will:
+
+Pull the image zolig/covid-vaccine-report
+
+Mount your local report/ directory into the container
+
+Generate:
+
+    report/figures/required_figure.png
+    
+    report/tables/required_table.html
+
+------------------------------------------------------------------------
+## Windows Git Bash Users
+
+If the docker run command gives a mount error, modify your Makefile path to:
+
+```makefile
+
+-v /$$(pwd)/report:/home/project/report
+
 ```
 ------------------------------------------------------------------------ 
+## DockerHub Image
 
+Public Docker Image:
+
+https://hub.docker.com/r/zolig/covid-vaccine-report
 ------------------------------------------------------------------------
 
 ## Notes
 
--   All file paths are relative and cross-platform compatible
--   Report dependencies are modularized via external scripts
--   Use the Makefile to automate the entire pipeline
+- All file paths are relative and OS-compatible
 
+- Project is fully automated via Makefile
 
+- Dockerfile avoids COPY . . and installs only needed packages
+
+- Output files are not included in the repo but generated on demand
 
 ------------------------------------------------------------------------

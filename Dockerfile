@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
-    pandoc
+    pandoc \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p scripts data report
 
@@ -17,6 +18,7 @@ COPY data/DATASET.csv data/
 RUN Rscript -e "install.packages(c('here', 'writexl', 'readxl', 'scales', 'pacman', 'gt'))"
 
 CMD ["sh", "-c", "Rscript scripts/create_required_figure.R && Rscript scripts/create_required_table.R"]
+
 
 
 

@@ -2,10 +2,15 @@
 .Rhistory
 .RData
 .Rproj.user/
+*.Rproj
+
+.DS_Store
 
 report/*.html
+report/*.png
+report/*.pdf
+report/figures/
+report/tables/
 
 *.utf8.md
 *.knit.md
-
-.DS_Store
