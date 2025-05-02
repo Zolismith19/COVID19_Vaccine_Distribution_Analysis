@@ -26,17 +26,16 @@ COVID_FINAL/
 ├── report/
 │   ├── FINAL550-ZOLI-G-S.Rmd
 │   ├── FINAL550-ZOLI-G-S.html
-│   ├── tables/
-│   │   └── required_table.html
-│   └── figures/
-│       └── required_figure.png
+│   ├── figures/
+│   │   └── required_figure.png
+│   └── tables/
+│       └── required_table.html
 ├── scripts/
 │   ├── create_required_figure.R
 │   └── create_required_table.R
 ├── renv/
 │   ├── activate.R
 │   ├── settings.dcf
-│   └── (ignore library/)
 ├── .Rprofile
 ├── renv.lock
 ├── FINAL550-ZOLI-G-S.Rmd
@@ -96,20 +95,16 @@ This project uses [`renv`](https://rstudio.github.io/renv/) for reproducibility.
 make install
 ```
 
-This will restore the R environment from `renv.lock`.
-
 ---
 
 ## Dockerized Workflow (Fully Automated)
 
-### Build the Image (Optional if using DockerHub)
+### Build the Image (Optional)
 ```bash
 docker build -t zolig/covid-vaccine-report .
 ```
 
----
-
-### Run with Docker
+### Run the Container (Generates the Report)
 ```bash
 make docker-run
 ```
@@ -119,7 +114,7 @@ This will:
 - Generate:
   - `report/figures/required_figure.png`
   - `report/tables/required_table.html`
-  - `report/report.html`
+  - `report/FINAL550-ZOLI-G-S.html`
 
 ---
 
@@ -132,7 +127,7 @@ If `docker run` fails with a path error, update the mount path like this:
 ---
 
 ## DockerHub Image
-Public Docker Image:  
+Public Docker Image:
 https://hub.docker.com/r/zolig/covid-vaccine-report
 
 ---
@@ -142,3 +137,4 @@ https://hub.docker.com/r/zolig/covid-vaccine-report
 - Output files are **not versioned**; they’re created fresh each run
 - Dockerfile avoids `COPY . .` and installs only required files
 - Project is reproducible, portable, and clean
+

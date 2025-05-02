@@ -21,7 +21,10 @@ COPY scripts/ ./scripts/
 COPY data/ ./data/
 COPY FINAL550-ZOLI-G-S.Rmd ./
 
-CMD ["sh", "-c", "Rscript scripts/create_required_table.R && Rscript scripts/create_required_figure.R && Rscript -e \"rmarkdown::render('FINAL550-ZOLI-G-S.Rmd', output_file = 'report/report.html')\""]
+CMD ["sh", "-c", \
+  "Rscript scripts/create_required_table.R && \
+   Rscript scripts/create_required_figure.R && \
+   Rscript -e \"rmarkdown::render('FINAL550-ZOLI-G-S.Rmd', output_file = 'report/report.html')\""]
 
 
 
