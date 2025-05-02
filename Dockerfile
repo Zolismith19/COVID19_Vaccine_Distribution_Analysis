@@ -1,4 +1,3 @@
-
 FROM rocker/tidyverse:latest
 
 WORKDIR /project
@@ -16,15 +15,15 @@ RUN apt-get update && apt-get install -y \
 COPY .Rprofile renv.lock ./
 COPY renv/activate.R renv/settings.dcf ./renv/
 
-RUN Rscript -e "install.packages('renv', repos='https://cloud.r-project.org'); renv::restore(prompt = FALSE)"
+RUN Rscript -e "install.packages('renv', repos = 'https://cloud.r-project.org'); renv::restore(prompt = FALSE)"
 
-# Copy the rest of the project files
 COPY scripts/ ./scripts/
 COPY data/ ./data/
 COPY FINAL550-ZOLI-G-S.Rmd ./
 
-CMD ["sh", "-c", \
-  "Rscript scripts/create_required_table.R && \
-   Rscript scripts/create_required_figure.R && \
-   Rscript -e \"rmarkdown::render('FINAL550-ZOLI-G-S.Rmd', output_file = 'report/report.html')\""]
+CMD ["sh", "-c", "Rscript scripts/create_required_table.R && Rscript scripts/create_required_figure.R && Rscript -e \"rmarkdown::render('FINAL550-ZOLI-G-S.Rmd', output_file = 'report/report.html')\""]
+
+
+
+
 

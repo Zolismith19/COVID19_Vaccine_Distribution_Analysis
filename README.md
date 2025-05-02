@@ -25,15 +25,11 @@ COVID_FINAL/
 │   └── DATASET.csv
 ├── report/
 │   ├── FINAL550-ZOLI-G-S.Rmd
-│   ├── FINAL550-ZOLI-G-S--.html
+│   ├── FINAL550-ZOLI-G-S.html
 │   ├── tables/
 │   │   └── required_table.html
 │   └── figures/
 │       └── required_figure.png
-│   ├── figures/
-│   │   └── required_figure.png
-│   └── tables/
-│       └── required_table.html
 ├── scripts/
 │   ├── create_required_figure.R
 │   └── create_required_table.R
@@ -59,7 +55,7 @@ make
 ```
 This will:
 - Generate `required_table.html` and `required_figure.png`
-- Knit the `.Rmd` file into `report/FINAL550-ZOLI-G-S--.html`
+- Knit the `.Rmd` file into `report/FINAL550-ZOLI-G-S.html`
 
 ### Option 2: Using RStudio
 1. Open `FINAL550-ZOLI-G-S.Rmd`
@@ -89,77 +85,31 @@ Regenerate manually with:
 ```r
 source("scripts/create_required_figure.R")
 ```
-------------------------------------------------------------------------
-## Package Installation (with renv)
-
-This project uses renv for reproducibility. To restore the environment:
 
 ---
 
-## Install R Packages with renv
+## Package Installation (with renv)
 
-This project uses [`renv`](https://rstudio.github.io/renv/) for package management. After cloning:
+This project uses [`renv`](https://rstudio.github.io/renv/) for reproducibility. To restore the environment:
+
 ```bash
 make install
 ```
+
 This will restore the R environment from `renv.lock`.
 
-# Dockerized Workflow (Automated)
-
-## Build the Image (optional if using DockerHub)
-
-=======
 ---
 
-# Dockerized Workflow (Fully Automated)
+## Dockerized Workflow (Fully Automated)
 
-## Build the Image (Optional if using DockerHub)
+### Build the Image (Optional if using DockerHub)
 ```bash
-
 docker build -t zolig/covid-vaccine-report .
-
 ```
-------------------------------------------------------------------------
-## Run with Docker (automatically generates figure & table)
-
-```bash
-
-make docker-run
-
-```
-This will:
-
-Pull the image zolig/covid-vaccine-report
-
-Mount your local report/ directory into the container
-
-Generate:
-
-    report/figures/required_figure.png
-    
-    report/tables/required_table.html
-
-------------------------------------------------------------------------
-## Windows Git Bash Users
-
-If the docker run command gives a mount error, modify your Makefile path to:
-
-```makefile
-
--v /$$(pwd)/report:/home/project/report
-
-```
------------------------------------------------------------------------- 
-## DockerHub Image
-
-Public Docker Image:
-
-https://hub.docker.com/r/zolig/covid-vaccine-report
-------------------------------------------------------------------------
 
 ---
 
-## Run with Docker
+### Run with Docker
 ```bash
 make docker-run
 ```
@@ -182,7 +132,7 @@ If `docker run` fails with a path error, update the mount path like this:
 ---
 
 ## DockerHub Image
-Public Docker Image:
+Public Docker Image:  
 https://hub.docker.com/r/zolig/covid-vaccine-report
 
 ---
@@ -192,7 +142,3 @@ https://hub.docker.com/r/zolig/covid-vaccine-report
 - Output files are **not versioned**; they’re created fresh each run
 - Dockerfile avoids `COPY . .` and installs only required files
 - Project is reproducible, portable, and clean
-
-------------------------------------------------------------------------
----
-
